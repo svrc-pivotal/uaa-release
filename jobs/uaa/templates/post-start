@@ -1,14 +1,26 @@
 #!/bin/bash
 
-COUNT=0
-while [ $COUNT -lt 120 ]; do
+WHEN_FINISH=when-finish.timestamp
+WHEN_NOW=when-now.timestamp
+
+delete_ts_files() {
+  rm -f $WHEN_FINISH
+  rm -f $WHEN_NOW
+}
+
+touch -d "2 minutes" $WHEN_FINISH
+touch $WHEN_NOW
+
+while [ $WHEN_NOW -ot $WHEN_FINISH ]; do
     /var/vcap/jobs/uaa/bin/health_check
     if [ $? == 0 ]
     then
+        delete_ts_files
         exit 0
     fi
-    COUNT++
     sleep 1
+    touch $WHEN_NOW
 done
 
+delete_ts_files
 exit 1
