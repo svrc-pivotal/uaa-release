@@ -142,6 +142,7 @@
 
   add_value(params, p('login.saml.signMetaData'), 'login', 'saml', 'signMetaData') if p_opt('login.saml.signMetaData')
   add_value(params, p('login.saml.signRequest'), 'login', 'saml', 'signRequest') if p_opt('login.saml.signRequest')
+  add_value(params, p('login.saml.signatureAlgorithm'), 'login', 'saml', 'signatureAlgorithm') if p_opt('login.saml.signatureAlgorithm')
   add_value(params, p('login.saml.wantAssertionSigned'), 'login', 'saml', 'wantAssertionSigned')
 
   if_p('login.saml.providers') do |samlProviders|
