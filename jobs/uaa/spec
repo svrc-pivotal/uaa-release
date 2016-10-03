@@ -724,6 +724,8 @@ properties:
   login.saml.wantAssertionSigned:
     description: "Global property to request that external IDPs sign their SAML assertion before sending them to the UAA"
     default: false
+  login.saml.signatureAlgorithm:
+    description: "Global property to override XML Digital Signatures to SHA-256, set value http://www.w3.org/2001/04/xmldsig-more#rsa-sha256 or SHA-512, i.e. http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"
   login.url:
     description: |
       Set if you have an external login server.
